@@ -1,0 +1,12 @@
+当后台程序进程耗费资源（如在我的项目里在获取所有人员时，程序中遍历处理较多）时，导致 java.lang.OutOfMemoryError: Java heap space.
+而绕过MyEclipse直接用tomcat时，是好的，因此如果在MyEclipse里运行tomcat，还是以MyEclipse设置的Window->Preferences->MyEclipse->Servers->Tomcat x.x->JDK->Optional Java VM arguments
+作为入口内存参数限制（而此后tomcat的默认参数却正好能够容纳java程序进程），而MyEclipse的默认此参数值过小，因此可用此配置：
+-Xms256m
+-Xmx256m
+-XX:PermSize=512M
+-XX:MaxPermSize=512m
+
+（如tomcat单独运行程序也包此错，可用Windows环境下:%tomcat_home%/bin/catalina.bat文件：set JAVA_OPTS=-server -Xms256m -Xmx256m -XX:PermSize=512M -XX:MaxPermSize=512m -XX:-UseGCOverheadLimit %JAVA_OPTS%
+）
+
+参考链接：http://www.cnblogs.com/xuange306/p/6857114.html
