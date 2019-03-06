@@ -1,0 +1,7 @@
+ContainerBase.addChild: start:
+org.apache.catalina.LifecyleException: Failed to start component [StandardEngine[Catalina]......]
+    ...
+Caused by: java.lang.NoClassDefFoundError: FilterConfig
+    ...
+    
+没找到具体原因。重新克隆后端代码
